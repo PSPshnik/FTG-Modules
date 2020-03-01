@@ -57,17 +57,25 @@ class AFKMod(loader.Module):
         await self.allmodules.log("afk", data=utils.get_args_raw(message) or None)
         await utils.answer(message, self.strings["gone"])
 
-
-    async def waitcmd(self, message):
+    async def wait5cmd(self, message):
         await utils.answer(message, "Через 5 секунд это сообщение удалится")
-        
+
         for i in range(4, -1, -1):
             time.sleep(1)
             await utils.answer(message, "Через " + str(i) + " секунд это сообщение удалится")
-        
-        
+
         await message.delete()
 
+    async def waitcmd(self, message):
+        x = int(message.pattern_match.group(1).split(' ', 1)[0])
+        await utils.answer(message, "Через " + str(x) + " секунд это сообщение удалится")
+
+        for i in range(x - 1, -1, -1):
+            time.sleep(1)
+            await utils.answer(message, "Через " + str(i) + " секунд это сообщение удалится")
+
+        await message.delete()
+        
 
     async def afkcmd(self, message):
         """.afk [message]"""
