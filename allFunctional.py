@@ -32,7 +32,7 @@ def register(cb):
 @loader.tds
 class AFKMod(loader.Module):
     """Provides a message saying that you are unavailable"""
-    strings = {"name": "АФК",
+    strings = {"name": "Многофункциональный модуль by @gerasikoff",
                "gone": "<b>Я пиздую АФКишить</b>",
                "back": "<b>Здарова, ряботяги!</b>",
                "afk": "<b>Я в АФК, погоди (since {} ago).</b>",
